@@ -24,7 +24,14 @@ function filling() {
 
 function onFormSubmit(e) {
   e.preventDefault();
-  console.log({ email: form.email.value, message: form.message.value });
-  e.currentTarget.reset();
-  localStorage.removeItem('feedback-form-state');
+  if (
+    form.email.value.trim().length === 0 ||
+    form.message.value.trim().length === 0
+  ) {
+    alert(`Та шо ж таке, заповни обидва поля!`);
+  } else {
+    console.log({ email: form.email.value, message: form.message.value });
+    e.currentTarget.reset();
+    localStorage.removeItem('feedback-form-state');
+  }
 }
